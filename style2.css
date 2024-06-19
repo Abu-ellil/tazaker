@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: "Almarai", sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+#nav-links li {
+    margin-left: 20px;
+}
+
+#nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.party-details {
+    flex: 1;
+    padding: 50px;
+    text-align: center;
+}
+
+.party-details h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.party-details h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.party-details p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.party-details h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.party-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.party-details ul li {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    #nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        max-height: 0;
+        z-index: 1000;
+    }
+
+    #nav-links.show {
+        max-height: 200px; /* Adjust height as needed */
+    }
+
+    #nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .party-details {
+        padding: 30px;
+    }
+
+    .party-details h2 {
+        font-size: 30px;
+    }
+
+    .party-details h3 {
+        font-size: 24px;
+    }
+
+    .party-details p {
+        font-size: 16px;
+    }
+
+    .party-details h4 {
+        font-size: 22px;
+    }
+
+    .party-details ul li {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .party-details {
+        padding: 20px;
+    }
+
+    .party-details h2 {
+        font-size: 28px;
+    }
+
+    .party-details h3 {
+        font-size: 22px;
+    }
+
+    .party-details p {
+        font-size: 14px;
+    }
+
+    .party-details h4 {
+        font-size: 20px;
+    }
+
+    .party-details ul li {
+        font-size: 14px;
+    }
+}
