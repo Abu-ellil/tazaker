@@ -274,3 +274,45 @@ nav {
     margin: 0 auto;
     max-width: 800px;
 }
+/* Styles for ticket selection and total price */
+.party-details ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.party-details ul li select {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.party-details h4 {
+    margin-top: 20px;
+}
+
+#total-price {
+    font-weight: bold;
+    color: #333;
+}
+
+#checkout-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#checkout-btn:hover {
+    background-color: #555;
+}
+.logo a{
+        text-decoration: none;
+    color: white;
+}
