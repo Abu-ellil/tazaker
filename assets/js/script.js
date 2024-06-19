@@ -107,7 +107,7 @@ autoShowSlides();
 
 
 // Load JSON data
-fetch('parties.json')
+fetch('assets/parties.json')
   .then(response => response.json())
   .then(data => {
     const partyList = document.querySelector('.party-list');
@@ -117,18 +117,14 @@ fetch('parties.json')
       const partyItem = document.createElement('div');
       partyItem.classList.add('party-item');
       partyItem.innerHTML = `
-      <div class="image-container">
-<img src=${party.image} alt="Best 1">
-      </div>
-      
-      <h3>${party.party_name}</h3>
-      <div class="details">
-       
-        <p>التاريخ: ${party.date}</p>
-        <button onclick="viewPartyDetails(${index})">شراء</button>
-      </div>
-       
-        
+        <div class="image-container">
+          <img src="${party.image}" alt="${party.party_name}" onclick="viewPartyDetails(${index})">
+        </div>
+        <h3>${party.party_name}</h3>
+        <div class="details">
+          <p>التاريخ: ${party.date}</p>
+          <button onclick="viewPartyDetails(${index})">اعرف اكثر</button>
+        </div>
       `;
       partyList.appendChild(partyItem);
     });
@@ -137,10 +133,11 @@ fetch('parties.json')
     window.viewPartyDetails = function(index) {
       // Store selected party details in sessionStorage (or use other methods for state management)
       sessionStorage.setItem('selectedParty', JSON.stringify(data.parties[index]));
-
+console.log(data.parties[index]);
       // Navigate to details page
-      window.location.href = 'party-details.html';
+      window.location.href = '../../pages/party-details.html';
     };
   })
   .catch(error => console.error('Error fetching parties data:', error));
+
 

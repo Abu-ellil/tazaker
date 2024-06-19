@@ -211,3 +211,66 @@ nav {
         font-size: 14px;
     }
 }
+
+
+/* Base styles for the ticket list */
+.party-details ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Styles for each ticket item */
+.party-details ul li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(50% - 40px); /* Adjust width as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.party-details ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ticket title */
+.party-details ul li::before {
+    content: '🎫'; /* Optional ticket emoji */
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Make the layout responsive */
+@media screen and (max-width: 768px) {
+    .party-details ul li {
+        width: calc(100% - 40px); /* Full width on smaller screens */
+    }
+}
+
+/* Optional: Additional styles for the party details section */
+.party-details {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f7f7f760;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.party-details h2 {
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+.party-details ul {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+}
