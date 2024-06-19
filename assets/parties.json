@@ -5,7 +5,7 @@
       "place": "Beachside Club, Miami",
       "date": "2024-08-15",
       "description": "Join us for a thrilling beach party with live music and DJ sets.",
-      "image": "./assets/imgs/acdc.jpg",
+      "image": "../assets/imgs/acdc.jpg",
       "prices": {
         "vip": 150,
         "hightables": 100,
@@ -18,7 +18,7 @@
       "place": "Beachside Club, Miami",
       "date": "2024-08-15",
       "description": "Join us for a thrilling beach party with live music and DJ sets.",
-      "image": "./assets/imgs/cold.jpg",
+      "image": "../assets/imgs/cold.jpg",
       "prices": {
         "vip": 150,
         "hightables": 100,
@@ -31,7 +31,7 @@
       "place": "Beachside Club, Miami",
       "date": "2024-08-15",
       "description": "Join us for a thrilling beach party with live music and DJ sets.",
-      "image": "./assets/imgs/amr.jpg",
+      "image": "../assets/imgs/amr.jpg",
       "prices": {
         "vip": 150,
         "hightables": 100,
@@ -44,7 +44,7 @@
       "place": "Electric Nights Club, New York",
       "date": "2024-09-05",
       "description": "الفنانين احمد سعد و مودي و ديسكو مصر لا تفوت فرصة الحضور ولا تحجز الان عبر قولدن تيكت !!!",
-      "image": "./assets/imgs/141414141.jpg",
+      "image": "../assets/imgs/141414141.jpg",
       "prices": {
         "vip": 120,
         "hightables": 90,
@@ -57,7 +57,7 @@
       "place": "Grand Ballroom, Los Angeles",
       "date": "2024-10-20",
       "description": "A sophisticated masquerade ball with elegant costumes and live orchestra.",
-      "image": "./assets/imgs/41.jpg",
+      "image": "../assets/imgs/41.jpg",
       "prices": {
         "vip": 200,
         "hightables": 150,

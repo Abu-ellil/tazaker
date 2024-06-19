@@ -37,9 +37,10 @@
     // Display selected party details
     if (selectedParty) {
         const partyDetailsContent = document.getElementById('party-details-content');
+        console.log(selectedParty);
         partyDetailsContent.innerHTML = `
             <div class="image-container">
-                <img src="${selectedParty.image}" alt="${selectedParty.party_name}">
+                <img src=${selectedParty.image} alt="${selectedParty.party_name}">
             </div>
             <h3>${selectedParty.party_name}</h3>
             <p>Date: ${selectedParty.date}</p>
@@ -92,8 +93,8 @@
                     </select>
                 </li>
             </ul>
-            <h4>Total Price: $<span id="total-price">0</span></h4>
-            <button id="checkout-btn">Checkout</button>
+            <h4>المبلغ الاجمالي: $<span id="total-price">0</span></h4>
+            <button id="checkout-btn">الدفع الان</button>
         `;
     } else {
         // Handle case where no party is selected (optional)

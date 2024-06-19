@@ -133,7 +133,6 @@ fetch('assets/parties.json')
     window.viewPartyDetails = function(index) {
       // Store selected party details in sessionStorage (or use other methods for state management)
       sessionStorage.setItem('selectedParty', JSON.stringify(data.parties[index]));
-console.log(data.parties[index]);
       // Navigate to details page
       window.location.href = '../../pages/party-details.html';
     };
