@@ -4,6 +4,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    direction: rtl;
+}
+.logo img {
+  height: 70px;
 }
 .bg {
   animation:slide 3s ease-in-out infinite alternate;
@@ -244,9 +248,21 @@ nav {
 .party-details ul li::before {
     content: '🎫'; /* Optional ticket emoji */
     display: block;
-    font-size: 24px;
+    font-size: 94px;
     margin-bottom: 10px;
 }
+.ticket-counter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+.ticket-counter select{
+    width: 100px;
+    height: 30px;
+}
+
+
 
 /* Make the layout responsive */
 @media screen and (max-width: 768px) {
@@ -259,7 +275,7 @@ nav {
 .party-details {
     padding: 50px 20px;
     text-align: center;
-    background-color: #f7f7f760;
+    background-color: #f7f7f7b7;
     border-radius: 8px;
     margin: 20px;
 }
@@ -296,17 +312,19 @@ nav {
 
 #total-price {
     font-weight: bold;
-    color: #333;
+    color: #333333;
 }
 
 #checkout-btn {
-    background-color: #333;
+    font-size: 24px;
+    background-color: #071ff0;
     color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
     margin-top: 20px;
+    font-family: "Almarai", sans-serif;
 }
 
 #checkout-btn:hover {

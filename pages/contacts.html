@@ -4,27 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Document</title>
+    <title>اتصل بنا</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+
+        .map-container {
+            margin-top: 20px;
+            height: 400px;
+            width: 100%;
+        }
+
+        .whatsapp-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .whatsapp-link:hover {
+            background: #1da851;
+        }
+
+        .whatsapp-icon {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="bg"></div>
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
-    <header>
-        
-        <nav>
-            <div class="menu-icon" id="menu-icon">
-                &#9776;
-            </div>
-            <ul id="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./tickets.html">Tickets</a></li>
-                <li><a href="./contacts.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="logo"><a href="../index.html">TicketMaster</a></div>
-    </header>
-    COntacts COntacts
+<header>
+    <nav>
+        <div class="menu-icon" id="menu-icon">
+            &#9776;
+        </div>
+        <ul id="nav-links">
+            <li><a href="./contacts.html">اتصل بنا</a></li>
+            <li><a href="./about.html">من نحن</a></li>
+            <li><a href="../index.html">الرئيسية</a></li>
+        </ul>
+    </nav>
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../assets/imgs/ticketico.png" alt="Logo">
+        </a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="contact-form">
+        <h2>اتصل بنا</h2>
+        <form action="#" method="post">
+            <label for="name">الأسم</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">رسالتك</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <button type="submit">إرسال</button>
+        </form>
+
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" class="whatsapp-link" target="_blank">
+            <img src="../assets/imgs/whatsapp.png" style="height: 50px; width: 50px" alt="WhatsApp" class="whatsapp-icon"> تواصل معنا عبر واتساب
+        </a>
+    </div>
+    
+    <div class="map-container" id="map">
+        <!-- Google Map will be displayed here -->
+    </div>
+</div>
+
+<script>
+    // Google Maps initialization (requires Google Maps API key)
+    function initMap() {
+        var location = { lat: 24.7136, lng: 46.6753 }; // Example coordinates for Riyadh, Saudi Arabia
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 </body>
 </html>

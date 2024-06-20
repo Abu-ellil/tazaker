@@ -11,20 +11,22 @@
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 <header>
-    <div class="logo"><a href="../index.html">TicketMaster</a></div>
     <nav>
-        <div class="menu-icon" id="menu-icon">&#9776;</div>
+        <div class="menu-icon" id="menu-icon">
+            &#9776;
+        </div>
         <ul id="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./tickets.html">Tickets</a></li>
-            <li><a href="./contacts.html">Contact</a></li>
+            <li><a href="./contacts.html">اتصل بنا</a></li>
+            <li><a href="./about.html">من نحن</a></li>
+            <li><a href="../index.html">الرئيسية</a></li>
         </ul>
     </nav>
+    <div class="logo"><a href="../index.html">
+        <img src="../assets/imgs/ticketico.png" alt="">
+    </a></div>
 </header>
 
 <div class="party-details">
-    <h2>Party Details</h2>
     <div id="party-details-content">
         <!-- Party details will be dynamically added here using JavaScript -->
     </div>
@@ -43,12 +45,15 @@
                 <img src=${selectedParty.image} alt="${selectedParty.party_name}">
             </div>
             <h3>${selectedParty.party_name}</h3>
-            <p>Date: ${selectedParty.date}</p>
-            <p>Place: ${selectedParty.place}</p>
-            <p>Description: ${selectedParty.description}</p>
-            <h4>Prices:</h4>
+            <p>التاريخ والوقت: ${selectedParty.date}</p>
+            <p>المكان: ${selectedParty.place}</p>
+            <p>عن الفاعلية: ${selectedParty.description}</p>
+            <h4>اسعار التزاكر:</h4>
             <ul>
-                <li>VIP: $${selectedParty.prices.vip}
+                <li> VIP: $${selectedParty.prices.vip}
+                    <div class="ticket-counter">
+
+                    <h4>عدد التزاكر</h4>
                     <select class="ticket-select" data-price="${selectedParty.prices.vip}">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -58,8 +63,12 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    </div>
                 </li>
                 <li>High Tables: $${selectedParty.prices.hightables}
+                    <div class="ticket-counter">
+
+                    <h4>عدد التزاكر</h4>
                     <select class="ticket-select" data-price="${selectedParty.prices.hightables}">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -68,9 +77,12 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
-                    </select>
+                    </select></div>
                 </li>
                 <li>Fan Pit: $${selectedParty.prices.fanpit}
+                    <div class="ticket-counter">
+                    <h4>عدد التزاكر</h4>
+
                     <select class="ticket-select" data-price="${selectedParty.prices.fanpit}">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -79,9 +91,13 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
-                    </select>
+                    </select></div>
                 </li>
                 <li>Regular: $${selectedParty.prices.regular}
+                    <div class="ticket-counter">
+
+                    <h4>عدد التزاكر</h4>
+
                     <select class="ticket-select" data-price="${selectedParty.prices.regular}">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -92,6 +108,7 @@
                         <option value="6">6</option>
                     </select>
                 </li>
+                    </div>
             </ul>
             <h4>المبلغ الاجمالي: $<span id="total-price">0</span></h4>
             <button id="checkout-btn">الدفع الان</button>

