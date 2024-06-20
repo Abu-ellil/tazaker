@@ -132,6 +132,22 @@
 </div>
 
 <script>
+    document.getElementById("menu-icon").addEventListener("click", () => {
+  const navLinks = document.getElementById("nav-links");
+  navLinks.classList.toggle("show");
+  
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+
+    menuIcon.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+});
+
+
     // Google Maps initialization (requires Google Maps API key)
     function initMap() {
         var location = { lat: 24.7136, lng: 46.6753 }; // Example coordinates for Riyadh, Saudi Arabia
@@ -146,5 +162,6 @@
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+<!-- <script src="../assets/js/script.js"></script> -->
 </body>
 </html>

@@ -33,6 +33,11 @@
 </div>
 
 <script>
+        document.getElementById("menu-icon").addEventListener("click", () => {
+  const navLinks = document.getElementById("nav-links");
+  navLinks.classList.toggle("show");
+  
+});
     // Retrieve selected party details from sessionStorage
     const selectedParty = JSON.parse(sessionStorage.getItem('selectedParty'));
 
